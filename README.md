@@ -1,16 +1,10 @@
-# flutter_unit_test
+# 単体テストの定義とは？
+`単体テストの考えた方/使い方`より引用
 
-A new Flutter project.
+単体テストの定義には様々なものがあります。本質的ではないものを除くと、
+単体テスト として定義されるテストには次に挙げる 3 つの重要な性質がすべて備えられていること
+になります。つまり、自動化されていて、次の 3 つの性質をすべて備えるものが単体テストとな るのです :
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. 「単体(unit)」と呼ばれる少量のコードを検証する 
+2. 実行時間が短い
+3. 隔離された状態で実行される
