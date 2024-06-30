@@ -156,3 +156,53 @@ void main() {
 |--------|---------|-----------------------------------|----------------|
 | ロンドン学派 | 単体      | １つのクラス                            | 不変依存を除くすべての依存  |
 | 古典学派   | テスト・ケース | １つのクラス、もしくは、同じ目的を達成するためのクラスの１グループ | 共有依存           |
+
+### 単体テストの構造解析
+AAAパターンについて
+- Arrange: テスト対象のオブジェクトを作成し、テスト対象のメソッドを呼び出すための準備を行う
+- Act: 実行
+- Assert: 結果を検証、確認
+
+単体テストにおいて回避すべき: if文の使用
+以下は、単体テストにおける`if`文の使用を避けるためのDartのテストコードの例です。
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+
+class Calculator {
+  double sum(double first, double second) {
+    return first + second;
+  }
+}
+
+void main() {
+  var calculator = Calculator();
+
+  test('sum of two positive numbers', () {
+    double first = 10;
+    double second = 20;
+    double result = calculator.sum(first, second);
+    expect(result, 30);
+  });
+
+  test('sum of two negative numbers', () {
+    double first = -10;
+    double second = -20;
+    double result = calculator.sum(first, second);
+    expect(result, -30);
+  });
+
+  test('sum of positive and negative number', () {
+    double first = 10;
+    double second = -20;
+    double result = calculator.sum(first, second);
+    expect(result, -10);
+  });
+}
+```
+
+このコードでは、if文を使用せずに、異なる条件をテストするために複数のテストケースを定義しています。
+各テストケースは独立しており、それぞれが特定の条件をテストします。
+これにより、テストケースが単純で理解しやすくなり、保守も容易になります。
+
+このように、単体テストでは、`if`文を使用せずに、異なる条件をテストするために複数のテストケースを定義することが推奨されます。
